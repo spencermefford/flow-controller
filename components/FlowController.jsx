@@ -7,7 +7,7 @@ import FlowControllerContext from '../context/FlowControllerContext';
 const FlowController = ({ steps, onComplete, children }) => {
   const history = useHistory();
 
-  const handleNext = (component) => {
+  const handleGotoNext = (component) => {
     const i = _.findIndex(steps, { component });
     const nextIndex = i + 1;
 
@@ -18,8 +18,10 @@ const FlowController = ({ steps, onComplete, children }) => {
   };
 
   return (
-    <FlowControllerContext.Provider value={handleNext}>
-      {_.isFunction(children) ? children({ gotoNext: handleNext }) : children}
+    <FlowControllerContext.Provider value={handleGotoNext}>
+      {_.isFunction(children)
+        ? children({ gotoNext: handleGotoNext })
+        : children}
     </FlowControllerContext.Provider>
   );
 };

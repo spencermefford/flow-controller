@@ -2,7 +2,7 @@ import React from 'react';
 import useFlowController from '../hooks/useFlowController';
 
 const InnerTwo = () => {
-  const onNext = useFlowController();
+  const gotoNext = useFlowController();
   return (
     <>
       <div>InnerTwo</div>
@@ -10,7 +10,7 @@ const InnerTwo = () => {
         <button
           type="button"
           onClick={() => {
-            onNext('InnerTwo');
+            gotoNext('InnerTwo');
           }}
         >
           Next

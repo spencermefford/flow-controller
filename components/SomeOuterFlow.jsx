@@ -13,10 +13,10 @@ const getStepIndicator = (index, length) =>
 const SomeOuterFlow = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const steps = [
-    { path: '/step1' },
-    { path: '/step2' },
-    { path: '/step3' },
-    { path: '/step4' },
+    { path: '/component-one' },
+    { path: '/component-two' },
+    { path: '/some-inner-flow' },
+    { path: '/component-three' },
   ];
 
   const handleComplete = () => {
@@ -28,7 +28,7 @@ const SomeOuterFlow = () => {
   return (
     <div>
       <h2>{getStepIndicator(currentStep, steps.length)}</h2>
-      <MemoryRouter initialEntries={['/step1']}>
+      <MemoryRouter initialEntries={[steps[0].path]}>
         <FlowController
           steps={steps}
           onStepChange={setCurrentStep}
@@ -36,16 +36,16 @@ const SomeOuterFlow = () => {
         >
           {({ gotoNext }) => (
             <>
-              <Route exact path={steps[0].path}>
+              <Route exact path="/component-one">
                 <ComponentOne />
               </Route>
-              <Route exact path={steps[1].path}>
+              <Route exact path="/component-two">
                 <ComponentTwo />
               </Route>
-              <Route exact path={steps[2].path}>
+              <Route exact path="/some-inner-flow">
                 <SomeInnerFlow onComplete={() => gotoNext()} />
               </Route>
-              <Route exact path={steps[3].path}>
+              <Route exact path="/component-three">
                 <ComponentThree />
               </Route>
             </>

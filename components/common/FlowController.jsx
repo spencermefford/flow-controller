@@ -4,7 +4,12 @@ import _ from 'lodash';
 import { useHistory } from 'react-router-dom';
 import FlowControllerContext from '../../context/FlowControllerContext';
 
-const FlowController = ({ steps, onComplete, children }) => {
+const FlowController = ({
+  steps,
+  onStepChange = () => {},
+  onComplete = () => {},
+  children,
+}) => {
   const history = useHistory();
   const currentIndexRef = useRef(0);
 
@@ -13,8 +18,9 @@ const FlowController = ({ steps, onComplete, children }) => {
 
     if (nextIndex < steps.length) {
       const step = steps[nextIndex];
-      history.push(step.path);
+      onStepChange(nextIndex);
       currentIndexRef.current = nextIndex;
+      history.push(step.path);
     } else if (onComplete) onComplete();
   };
 
@@ -29,6 +35,7 @@ const FlowController = ({ steps, onComplete, children }) => {
 
 FlowController.propTypes = {
   steps: PropTypes.arrayOf(PropTypes.object),
+  onStepChange: PropTypes.func,
   onComplete: PropTypes.func,
   // eslint-disable-next-line react/forbid-prop-types
   children: PropTypes.any.isRequired,
@@ -36,6 +43,7 @@ FlowController.propTypes = {
 
 FlowController.defaultProps = {
   steps: [],
+  onStepChange: () => {},
   onComplete: () => {},
 };
 export default FlowController;

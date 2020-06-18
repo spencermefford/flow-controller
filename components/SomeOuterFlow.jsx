@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MemoryRouter, Route } from 'react-router-dom';
+import _ from 'lodash';
 import FlowController from './common/FlowController';
 import SomeInnerFlow from './inner-flow/SomeInnerFlow';
 import ComponentOne from './ComponentOne';
 import ComponentTwo from './ComponentTwo';
 import ComponentThree from './ComponentThree';
 
+const getStepIndicator = (index, length) =>
+  _.times(length, (i) => `${i === index ? 'X' : 'O'} `);
+
 const SomeOuterFlow = () => {
+  const [currentStep, setCurrentStep] = useState(0);
   const steps = [
     { path: '/step1' },
     { path: '/step2' },
@@ -21,26 +26,33 @@ const SomeOuterFlow = () => {
   };
 
   return (
-    <MemoryRouter initialEntries={['/step1']}>
-      <FlowController steps={steps} onComplete={handleComplete}>
-        {({ gotoNext }) => (
-          <>
-            <Route exact path={steps[0].path}>
-              <ComponentOne />
-            </Route>
-            <Route exact path={steps[1].path}>
-              <ComponentTwo />
-            </Route>
-            <Route exact path={steps[2].path}>
-              <SomeInnerFlow onComplete={() => gotoNext()} />
-            </Route>
-            <Route exact path={steps[3].path}>
-              <ComponentThree />
-            </Route>
-          </>
-        )}
-      </FlowController>
-    </MemoryRouter>
+    <div>
+      <h2>{getStepIndicator(currentStep, steps.length)}</h2>
+      <MemoryRouter initialEntries={['/step1']}>
+        <FlowController
+          steps={steps}
+          onStepChange={setCurrentStep}
+          onComplete={handleComplete}
+        >
+          {({ gotoNext }) => (
+            <>
+              <Route exact path={steps[0].path}>
+                <ComponentOne />
+              </Route>
+              <Route exact path={steps[1].path}>
+                <ComponentTwo />
+              </Route>
+              <Route exact path={steps[2].path}>
+                <SomeInnerFlow onComplete={() => gotoNext()} />
+              </Route>
+              <Route exact path={steps[3].path}>
+                <ComponentThree />
+              </Route>
+            </>
+          )}
+        </FlowController>
+      </MemoryRouter>
+    </div>
   );
 };
 

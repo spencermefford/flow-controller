@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import FlowControllerContext from '../context/FlowControllerContext';
+import React from 'react';
+import useFlowController from '../hooks/useFlowController';
 
 const ComponentOne = () => {
-  const onNext = useContext(FlowControllerContext);
+  const onNext = useFlowController();
   return (
     <>
       <div>ComponentOne</div>

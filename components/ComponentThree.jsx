@@ -11,7 +11,7 @@ const ComponentThree = () => {
         <button
           type="button"
           onClick={() => {
-            gotoNext('ComponentThree');
+            gotoNext();
           }}
         >
           Done

@@ -11,7 +11,7 @@ const ComponentTwo = () => {
         <button
           type="button"
           onClick={() => {
-            gotoNext('ComponentTwo');
+            gotoNext();
           }}
         >
           Next

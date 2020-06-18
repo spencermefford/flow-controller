@@ -11,7 +11,7 @@ const InnerTwo = () => {
         <button
           type="button"
           onClick={() => {
-            gotoNext('InnerTwo');
+            gotoNext();
           }}
         >
           Next

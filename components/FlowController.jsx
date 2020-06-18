@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { useHistory } from 'react-router-dom';
@@ -6,14 +6,15 @@ import FlowControllerContext from '../context/FlowControllerContext';
 
 const FlowController = ({ steps, onComplete, children }) => {
   const history = useHistory();
+  const currentIndexRef = useRef(0);
 
-  const handleGotoNext = (component) => {
-    const i = _.findIndex(steps, { component });
-    const nextIndex = i + 1;
+  const handleGotoNext = () => {
+    const nextIndex = currentIndexRef.current + 1;
 
     if (nextIndex < steps.length) {
-      const { path } = steps[i + 1];
-      history.push(path);
+      const step = steps[nextIndex];
+      history.push(step.path);
+      currentIndexRef.current = nextIndex;
     } else if (onComplete) onComplete();
   };
 

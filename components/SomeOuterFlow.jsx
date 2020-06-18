@@ -8,10 +8,10 @@ import ComponentThree from './ComponentThree';
 
 const SomeOuterFlow = () => {
   const steps = [
-    { path: '/step1', component: 'ComponentOne' },
-    { path: '/step2', component: 'ComponentTwo' },
-    { path: '/step3', component: 'SomeInnerFlow' },
-    { path: '/step4', component: 'ComponentThree' },
+    { path: '/step1' },
+    { path: '/step2' },
+    { path: '/step3' },
+    { path: '/step4' },
   ];
 
   const handleComplete = () => {
@@ -32,7 +32,7 @@ const SomeOuterFlow = () => {
               <ComponentTwo />
             </Route>
             <Route exact path="/step3">
-              <SomeInnerFlow onComplete={() => gotoNext('SomeInnerFlow')} />
+              <SomeInnerFlow onComplete={() => gotoNext()} />
             </Route>
             <Route exact path="/step4">
               <ComponentThree />

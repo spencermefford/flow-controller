@@ -12,7 +12,7 @@ const InnerOne = () => {
         <button
           type="button"
           onClick={() => {
-            gotoNext('InnerOne');
+            gotoNext();
           }}
         >
           Next

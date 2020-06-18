@@ -6,10 +6,7 @@ import InnerTwo from './InnerTwo';
 import FlowController from './FlowController';
 
 const SomeInnerFlow = ({ onComplete }) => {
-  const steps = [
-    { path: '/inner1', component: 'InnerOne' },
-    { path: '/inner2', component: 'InnerTwo' },
-  ];
+  const steps = [{ path: '/inner1' }, { path: '/inner2' }];
 
   return (
     <MemoryRouter initialEntries={['/inner1']}>

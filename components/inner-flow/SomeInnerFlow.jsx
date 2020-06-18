@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { MemoryRouter, Route } from 'react-router-dom';
 import InnerOne from './InnerOne';
 import InnerTwo from './InnerTwo';
-import FlowController from './FlowController';
+import FlowController from '../common/FlowController';
 
 const SomeInnerFlow = ({ onComplete }) => {
   const steps = [{ path: '/inner1' }, { path: '/inner2' }];
@@ -11,10 +11,10 @@ const SomeInnerFlow = ({ onComplete }) => {
   return (
     <MemoryRouter initialEntries={['/inner1']}>
       <FlowController steps={steps} onComplete={onComplete}>
-        <Route exact path="/inner1">
+        <Route exact path={steps[0].path}>
           <InnerOne />
         </Route>
-        <Route exact path="/inner2">
+        <Route exact path={steps[1].path}>
           <InnerTwo />
         </Route>
       </FlowController>

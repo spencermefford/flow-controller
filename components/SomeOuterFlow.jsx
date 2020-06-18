@@ -1,9 +1,9 @@
 import React from 'react';
 import { MemoryRouter, Route } from 'react-router-dom';
-import SomeInnerFlow from './SomeInnerFlow';
+import FlowController from './common/FlowController';
+import SomeInnerFlow from './inner-flow/SomeInnerFlow';
 import ComponentOne from './ComponentOne';
 import ComponentTwo from './ComponentTwo';
-import FlowController from './FlowController';
 import ComponentThree from './ComponentThree';
 
 const SomeOuterFlow = () => {
@@ -25,16 +25,16 @@ const SomeOuterFlow = () => {
       <FlowController steps={steps} onComplete={handleComplete}>
         {({ gotoNext }) => (
           <>
-            <Route exact path="/step1">
+            <Route exact path={steps[0].path}>
               <ComponentOne />
             </Route>
-            <Route exact path="/step2">
+            <Route exact path={steps[1].path}>
               <ComponentTwo />
             </Route>
-            <Route exact path="/step3">
+            <Route exact path={steps[2].path}>
               <SomeInnerFlow onComplete={() => gotoNext()} />
             </Route>
-            <Route exact path="/step4">
+            <Route exact path={steps[3].path}>
               <ComponentThree />
             </Route>
           </>

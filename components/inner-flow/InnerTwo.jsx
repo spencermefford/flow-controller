@@ -1,5 +1,5 @@
 import React from 'react';
-import useFlowController from '../hooks/useFlowController';
+import useFlowController from '../../hooks/useFlowController';
 
 const InnerTwo = () => {
   const gotoNext = useFlowController();

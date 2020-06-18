@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { useHistory } from 'react-router-dom';
-import FlowControllerContext from '../context/FlowControllerContext';
+import FlowControllerContext from '../../context/FlowControllerContext';
 
 const FlowController = ({ steps, onComplete, children }) => {
   const history = useHistory();

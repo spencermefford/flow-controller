@@ -6,6 +6,7 @@ const InnerTwo = () => {
   return (
     <>
       <div>InnerTwo</div>
+      <br />
       <div>
         <button
           type="button"

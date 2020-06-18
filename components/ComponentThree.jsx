@@ -6,6 +6,7 @@ const ComponentThree = () => {
   return (
     <>
       <div>ComponentThree</div>
+      <br />
       <div>
         <button
           type="button"
@@ -13,7 +14,7 @@ const ComponentThree = () => {
             gotoNext('ComponentThree');
           }}
         >
-          Next
+          Done
         </button>
       </div>
     </>

@@ -10,6 +10,7 @@ const SomeInnerFlow = ({ onComplete }) => {
     { path: '/inner1', component: 'InnerOne' },
     { path: '/inner2', component: 'InnerTwo' },
   ];
+
   return (
     <MemoryRouter initialEntries={['/inner1']}>
       <FlowController steps={steps} onComplete={onComplete}>

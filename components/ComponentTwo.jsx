@@ -6,6 +6,7 @@ const ComponentTwo = () => {
   return (
     <>
       <div>ComponentTwo</div>
+      <br />
       <div>
         <button
           type="button"

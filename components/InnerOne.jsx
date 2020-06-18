@@ -7,6 +7,7 @@ const InnerOne = () => {
   return (
     <>
       <div>InnerOne</div>
+      <br />
       <div>
         <button
           type="button"

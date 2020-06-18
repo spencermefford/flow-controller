@@ -15,7 +15,6 @@ const InnerTwo = () => {
         >
           Next
         </button>
-
       </div>
     </>
   );

@@ -3,6 +3,7 @@ import useFlowController from '../hooks/useFlowController';
 
 const InnerOne = () => {
   const onNext = useFlowController();
+
   return (
     <>
       <div>InnerOne</div>
@@ -15,7 +16,6 @@ const InnerOne = () => {
         >
           Next
         </button>
-
       </div>
     </>
   );

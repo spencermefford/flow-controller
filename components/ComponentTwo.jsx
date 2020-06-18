@@ -15,7 +15,6 @@ const ComponentTwo = () => {
         >
           Next
         </button>
-
       </div>
     </>
   );
